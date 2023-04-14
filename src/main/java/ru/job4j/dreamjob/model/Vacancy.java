@@ -8,13 +8,12 @@ public class Vacancy {
     private int id;
     private String title;
     private String description;
-    private LocalDateTime creationDate;
+    private LocalDateTime creationDate = LocalDateTime.now();
 
     public Vacancy(int id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.creationDate = LocalDateTime.now();
     }
 
     public int getId() {
