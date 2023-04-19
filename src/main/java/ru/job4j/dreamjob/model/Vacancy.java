@@ -10,6 +10,9 @@ public class Vacancy {
     private String description;
     private LocalDateTime creationDate = LocalDateTime.now();
 
+    public Vacancy() {
+    }
+
     public Vacancy(int id, String title, String description) {
         this.id = id;
         this.title = title;
