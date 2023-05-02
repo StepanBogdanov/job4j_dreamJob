@@ -11,8 +11,8 @@ public class SimpleCityService implements CityService {
 
     private final CityRepository cityRepository;
 
-    public SimpleCityService(CityRepository cityRepository) {
-        this.cityRepository = cityRepository;
+    public SimpleCityService(CityRepository sql2oRepository) {
+        this.cityRepository = sql2oRepository;
     }
 
     @Override
