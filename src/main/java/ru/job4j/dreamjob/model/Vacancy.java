@@ -36,6 +36,16 @@ public class Vacancy {
         this.fileId = fileId;
     }
 
+    public Vacancy(int id, String title, String description, LocalDateTime creationDate, boolean visible, int cityId, int fileId) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.visible = visible;
+        this.cityId = cityId;
+        this.fileId = fileId;
+    }
+
     public int getId() {
         return id;
     }
@@ -62,6 +72,10 @@ public class Vacancy {
 
     public LocalDateTime getCreationDate() {
         return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public boolean getVisible() {
