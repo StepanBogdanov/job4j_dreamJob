@@ -1,5 +1,7 @@
 package ru.job4j.dreamjob.repository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.dreamjob.model.User;
@@ -9,6 +11,8 @@ import java.util.Optional;
 
 @Repository
 public class Sql2oUserRepository implements UserRepository {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Sql2oUserRepository.class.getName());
 
     private final Sql2o sql2o;
 
@@ -26,14 +30,13 @@ public class Sql2oUserRepository implements UserRepository {
                     .addParameter("email", user.getEmail())
                     .addParameter("name", user.getName())
                     .addParameter("password", user.getPassword());
-            try {
-                int generatedId = query.executeUpdate().getKey(Integer.class);
-                user.setId(generatedId);
-                return Optional.of(user);
-            } catch (Exception e) {
-                return Optional.empty();
-            }
+            int generatedId = query.executeUpdate().getKey(Integer.class);
+            user.setId(generatedId);
+            return Optional.of(user);
+        } catch (Exception e) {
+            LOG.error("Registration error", e);
         }
+        return Optional.empty();
     }
 
     @Override
